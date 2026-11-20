@@ -24,14 +24,67 @@ const audios = Array.from({ length: 6 }, (_, i) => ({
   credito: "", identificacionAutorizada: false, disponible: false
 }));
 
-//Audio
-audios[0].titulo = "Voces de familia: un saludo que transmite cuidado";
-// Interpretación contextual proporcionada por un integrante; no es una traducción literal.
-audios[0].expresion = "Conversación familiar: saludo y preocupación por la salud de un hijo.";
-audios[0].significado = "Ricarda y Miguel se saludan y conversan sobre el estado de salud de su hijo de 22 años, quien estaba enfermo. Ambos esperan conocer lo que indique el médico.";
-audios[0].contexto = "Más allá de las palabras, esta grabación refleja cómo los idiomas viven en los momentos cotidianos: al saludar, preguntar por nuestros seres queridos y expresar afecto y solidaridad. Cada conversación familiar conserva una parte de nuestra memoria, nuestra identidad y los vínculos que unen a las generaciones.";
-audios[0].ruta = "Audio/01.mpeg";
-audios[0].disponible = true;
+
+ // ============================================
+ // ARCHIVO SONORO - VOCES QUE PERMANECEN
+ // ============================================
+
+ // AUDIO 01
+ // Conversación familiar entre Ricarda y Miguel.
+
+ audios[0].titulo =
+   "Voces de familia: un saludo que transmite cuidado";
+
+ audios[0].expresion =
+   "Conversación familiar: saludo y preocupación por la salud de un hijo.";
+
+ audios[0].significado =
+   "Ricarda y Miguel se saludan y conversan sobre el estado de salud " +
+   "de su hijo de 22 años, quien estaba enfermo. Ambos esperan conocer " +
+   "lo que indique el médico.";
+
+ audios[0].contexto =
+   "Más allá de las palabras, esta grabación refleja cómo los idiomas " +
+   "viven en los momentos cotidianos: al saludar, preguntar por nuestros " +
+   "seres queridos y expresar afecto y solidaridad. Cada conversación " +
+   "familiar conserva una parte de nuestra memoria, nuestra identidad " +
+   "y los vínculos que unen a las generaciones.";
+
+ audios[0].ruta = "Audio/01.mpeg";
+ audios[0].disponible = true;
+
+
+ // ============================================
+ // AUDIO 02
+ // Comunicación cotidiana y experiencias
+ // compartidas dentro de la comunidad.
+ // ============================================
+
+ audios[1].titulo =
+   "Palabras que conectan: la vida cotidiana en nuestra lengua";
+
+ audios[1].expresion =
+   "Conversación cotidiana sobre una visita a la iglesia " +
+   "y el intercambio de noticias.";
+
+ audios[1].significado =
+   "En esta grabación se comparte una conversación en la que se " +
+   "menciona que Damaris contó que el día anterior habían asistido " +
+   "a la iglesia, de donde salieron tarde. También se habla del " +
+   "envío de una medida y de dinero.";
+
+ audios[1].contexto =
+   "Los idiomas no solo conservan historias del pasado; también " +
+   "acompañan las experiencias del presente. A través de conversaciones " +
+   "sobre actividades, encuentros y asuntos cotidianos, las personas " +
+   "comparten noticias y mantienen sus vínculos. Esta grabación nos " +
+   "recuerda que preservar un idioma significa también reconocer su " +
+   "importancia como medio de comunicación en la vida diaria, donde " +
+   "cada palabra forma parte de la identidad y la memoria de una comunidad.";
+
+ audios[1].ruta = "Audio/02.ogg";
+ audios[1].disponible = true;
+
 
 
 // Solo fotos propias autorizadas. Ejemplo de entrada (quitar // para usar):
