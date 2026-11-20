@@ -1,3 +1,4 @@
+
 "use strict";
 
 // DATOS EDITABLES. Guardar este archivo conserva los cambios al recargar.
@@ -18,13 +19,17 @@ const integrantes = [
 // Completar con personas hablantes. disponible:true SOLO tras revisión y permiso
 // de reproducción. Publicar requiere un permiso separado. El crédito es opcional.
 const audios = Array.from({ length: 6 }, (_, i) => ({
-  titulo: "Expresión " + (i + 1), idioma: "", expresion: "", significado: "",
+  titulo: "Expresión " + (i + 1), idioma: "", expresion: "", significado: "", contexto: "",
   ruta: "audios/" + String(i + 1).padStart(2, "0") + ".mp3",
   credito: "", identificacionAutorizada: false, disponible: false
 }));
 
 //Audio
-audios[0].titulo = "Primera expresión";
+audios[0].titulo = "Voces de familia: un saludo que transmite cuidado";
+// Interpretación contextual proporcionada por un integrante; no es una traducción literal.
+audios[0].expresion = "Conversación familiar: saludo y preocupación por la salud de un hijo.";
+audios[0].significado = "Ricarda y Miguel se saludan y conversan sobre el estado de salud de su hijo de 22 años, quien estaba enfermo. Ambos esperan conocer lo que indique el médico.";
+audios[0].contexto = "Más allá de las palabras, esta grabación refleja cómo los idiomas viven en los momentos cotidianos: al saludar, preguntar por nuestros seres queridos y expresar afecto y solidaridad. Cada conversación familiar conserva una parte de nuestra memoria, nuestra identidad y los vínculos que unen a las generaciones.";
 audios[0].ruta = "Audio/01.mpeg";
 audios[0].disponible = true;
 
@@ -55,7 +60,7 @@ function el(tag, clase, texto) {
 // Ilustraciones SVG integradas: funcionan sin internet ni archivos adicionales.
 const colores = ["#dc8981", "#eac17a", "#79b9a5", "#91add1", "#b6a2cb", "#dfaa7c"];
 function persona(x, y, color, escala = 1, pelo = "#29353b") {
-  return `<g transform="translate(${x} ${y}) scale(${escala})"><path d="M-34 76Q-36 30 0 29Q36 30 34 76Z" fill="${color}"/><path d="M-23 0Q-25-30 0-30Q27-30 23 2L21 31H-21Z" fill="${pelo}"/><ellipse cy="3" rx="20" ry="24" fill="#b97b55"/><path d="M-20-4Q-24-29 0-29Q23-28 21-4Q6-8 0-20Q-6-7-20-4" fill="${pelo}"/><path d="M-8 8h1m14 0h1" stroke="#342c2c" stroke-width="3" stroke-linecap="round"/><path d="M-5 18q5 4 10 0" fill="none" stroke="#643e32" stroke-width="2"/></g>`;
+  return `<g transform="translate(${x} ${y}) scale(${escala})"><path d="M-34 76Q-36 30 0 29Q36 30 34 76Z" fill="${color}"/><path d="M-23 0Q-25-30 0-30Q27-30 23 2L21 31H-21Z" fill="${pelo}"/><ellipse cy="3" rx="20" ry="24" fill="#b97b55"/><path d="M-20-4Q-24-29 0-29Q23-28 21-4L21-4Q6-8 0-20Q-6-7-20-4" fill="${pelo}"/><path d="M-8 8h1m14 0h1" stroke="#342c2c" stroke-width="3" stroke-linecap="round"/><path d="M-5 18q5 4 10 0" fill="none" stroke="#643e32" stroke-width="2"/></g>`;
 }
 const libro = '<path d="M39 214Q95 193 150 217Q206 193 261 214V264Q206 245 150 268Q95 245 39 264Z" fill="#fff2cf" stroke="#19313d" stroke-width="4"/><path d="M150 218v49M60 230q34-8 67 2m49 0q33-9 64-2" fill="none" stroke="#ac895a" stroke-width="3"/>';
 const dibujos = [
@@ -172,7 +177,8 @@ audios.forEach((dato, i) => {
   tarjeta.append(el("h3", "", dato.titulo));
   tarjeta.append(el("p", "", "Idioma: " + (dato.idioma || "Pendiente de confirmar")));
   tarjeta.append(el("p", "", "Expresión: " + (dato.expresion || "Pendiente de incorporar")));
-  tarjeta.append(el("p", "", "Significado en español: " + (dato.significado || "Pendiente de revisión")));
+  tarjeta.append(el("p", "", (dato.significado ? "Sentido de la conversación (interpretación contextual): " : "Significado en español: ") + (dato.significado || "Pendiente de revisión")));
+  if (dato.contexto) tarjeta.append(el("p", "", "Relación con el proyecto: " + dato.contexto));
   const player = el("audio"); player.controls = true; player.preload = "none";
   player.setAttribute("aria-label", "Escuchar " + dato.titulo);
   const aviso = el("p", "note"); aviso.setAttribute("role", "status");
