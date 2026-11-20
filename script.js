@@ -218,39 +218,196 @@ $("restart").addEventListener("click", reiniciar);
 reiniciar();
 
 // Un solo audio a la vez, sin reproducción automática y sin solicitudes externas.
+
+ // ============================================
+ // ARCHIVO SONORO: TARJETAS DESPLEGABLES
+ // ============================================
+
+ // Solo se permite reproducir un audio a la vez.
 let audioActivo = null;
 let disponibles = 0;
+
 function actualizarArchivo() {
-  $("archive-status").textContent = disponibles === 6
-    ? "Seis audios configurados para escuchar. Revisa su reproducción y registra las entregas por separado."
-    : "Recurso en preparación · " + disponibles + " de 6 audios configurados. Idioma y expresiones por confirmar donde se indique.";
+  $("archive-status").textContent =
+    disponibles === 6
+      ? "Seis audios configurados para escuchar."
+      : "Recurso en preparación · " +
+        disponibles +
+        " de 6 audios configurados. Idioma y expresiones por confirmar.";
 }
+
 audios.forEach((dato, i) => {
-  const tarjeta = el("article", "audio-card");
-  tarjeta.append(el("h3", "", dato.titulo));
-  tarjeta.append(el("p", "", "Idioma: " + (dato.idioma || "Pendiente de confirmar")));
-  tarjeta.append(el("p", "", "Expresión: " + (dato.expresion || "Pendiente de incorporar")));
-  tarjeta.append(el("p", "", (dato.significado ? "Sentido de la conversación (interpretación contextual): " : "Significado en español: ") + (dato.significado || "Pendiente de revisión")));
-  if (dato.contexto) tarjeta.append(el("p", "", "Relación con el proyecto: " + dato.contexto));
-  const player = el("audio"); player.controls = true; player.preload = "none";
-  player.setAttribute("aria-label", "Escuchar " + dato.titulo);
-  const aviso = el("p", "note"); aviso.setAttribute("role", "status");
+
+   // Contenedor principal
+  const tarjeta = el("article", "audio-card audio-card-compact");
+
+   // Encabezado y título
+  const encabezado = el("div", "audio-card-header");
+  encabezado.append(
+    el("h3", "", dato.titulo)
+  );
+
+   // Idioma
+  const idioma = el(
+    "p",
+    "audio-language",
+    "Idioma: " + (dato.idioma || "Pendiente de confirmar")
+  );
+
+   // Expresión resumida
+  const expresion = el(
+    "p",
+    "audio-expression",
+    "Expresión: " + (dato.expresion || "Pendiente de incorporar")
+  );
+
+   // Reproductor de audio
+  const player = el("audio", "audio-player");
+  player.controls = true;
+  player.preload = "metadata";
+
+  player.setAttribute(
+    "aria-label",
+    "Escuchar " + dato.titulo
+  );
+
+   // Estado del reproductor
+  const aviso = el("p", "note audio-status");
+  aviso.setAttribute("role", "status");
+
   if (dato.disponible) {
-    disponibles++; player.src = dato.ruta; aviso.textContent = "Audio configurado. Pulsa reproducir.";
+
+    disponibles++;
+    player.src = dato.ruta;
+
+    aviso.textContent = "Audio configurado. Pulsa reproducir.";
+
     let falloRegistrado = false;
+
     player.addEventListener("error", () => {
-      aviso.textContent = "No se pudo abrir " + dato.ruta + ". Verifica el nombre, la ubicación y el formato del archivo; después recarga la página.";
-      if (!falloRegistrado) { falloRegistrado = true; disponibles--; actualizarArchivo(); }
+
+      aviso.textContent =
+        "No se pudo abrir el audio. Verifica el archivo: " +
+        dato.ruta;
+
+      if (!falloRegistrado) {
+        falloRegistrado = true;
+        disponibles--;
+        actualizarArchivo();
+      }
+
     });
-  } else aviso.textContent = "Audio pendiente de incorporar";
+
+  } else {
+    aviso.textContent = "Audio pendiente de incorporar";
+  }
+
+   // Evitar reproducción simultánea
   player.addEventListener("play", () => {
-    if (audioActivo && audioActivo !== player) audioActivo.pause();
+
+    if (audioActivo && audioActivo !== player) {
+      audioActivo.pause();
+    }
+
     audioActivo = player;
+
   });
-  tarjeta.append(player, aviso);
-  if (dato.identificacionAutorizada && dato.credito.trim()) tarjeta.append(el("p", "note", "Voz: " + dato.credito));
+
+   // ============================================
+   // CONTENIDO DESPLEGABLE
+   // ============================================
+
+  const detalles = el("div", "audio-details");
+  detalles.id = "audio-details-" + i;
+  detalles.hidden = true;
+
+   // Significado
+  const significado = el(
+    "p",
+    "audio-meaning",
+    (dato.significado
+      ? "Sentido de la conversación (interpretación contextual): "
+      : "Significado en español: ") +
+    (dato.significado || "Pendiente de revisión")
+  );
+
+  detalles.append(significado);
+
+   // Relación con el proyecto
+  if (dato.contexto) {
+
+    const contexto = el(
+      "p",
+      "audio-context",
+      "Relación con el proyecto: " + dato.contexto
+    );
+
+    detalles.append(contexto);
+
+  }
+
+   // Crédito de la persona hablante
+  if (
+    dato.identificacionAutorizada &&
+    dato.credito &&
+    dato.credito.trim()
+  ) {
+
+    detalles.append(
+      el("p", "note", "Voz: " + dato.credito)
+    );
+
+  }
+
+   // ============================================
+   // BOTÓN LEER MÁS / LEER MENOS
+   // ============================================
+
+  const boton = el(
+    "button",
+    "audio-toggle",
+    "Leer más ▼"
+  );
+
+  boton.type = "button";
+
+  boton.setAttribute("aria-expanded", "false");
+  boton.setAttribute("aria-controls", detalles.id);
+
+  boton.addEventListener("click", () => {
+
+    const abrir = detalles.hidden;
+
+    detalles.hidden = !abrir;
+
+    boton.textContent = abrir
+      ? "Leer menos ▲"
+      : "Leer más ▼";
+
+    boton.setAttribute(
+      "aria-expanded",
+      String(abrir)
+    );
+
+    tarjeta.classList.toggle("expanded", abrir);
+
+  });
+
+   // Construcción final de la tarjeta
+  tarjeta.append(
+    encabezado,
+    idioma,
+    expresion,
+    player,
+    aviso,
+    boton,
+    detalles
+  );
+
   $("audio-cards").append(tarjeta);
+
 });
+
 actualizarArchivo();
 
 const etiquetas = { institucion: "Institución", docente: "Docente", seccion: "Sección", comunidad: "Comunidad", idioma: "Idioma", fechaDocumento: "Fecha del documento", fechaPresentacion: "Presentación" };

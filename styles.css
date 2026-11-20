@@ -57,3 +57,138 @@ footer{font-size:11px;color:#a6bfc3;text-align:center}
 @media(max-width:760px){.container{padding:17px}.layout{grid-template-columns:1fr;gap:15px}.stage{height:310px}.faces{grid-template-columns:repeat(3,minmax(0,1fr))}.face-button img{max-height:120px;object-fit:contain}.grid{grid-template-columns:1fr 1fr}.themes{grid-template-columns:1fr}.panel{padding:19px}header nav{gap:12px}h1{letter-spacing:-1px}}
 @media(max-width:430px){.grid:not(.team){grid-template-columns:1fr}.member{padding:12px}.member h3{font-size:15px}.stage{height:300px}.progress-label{font-size:12px}dl{grid-template-columns:1fr;gap:3px}dd{margin-bottom:8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+
+
+/* ==========================================
+   TARJETAS DE AUDIO COMPACTAS
+   ========================================== */
+
+.audio-card-compact {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 330px;
+  padding: 24px;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+/* Encabezado de altura uniforme */
+.audio-card-header {
+  min-height: 70px;
+  margin-bottom: 12px;
+}
+
+.audio-card-header h3 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1.2rem;
+}
+
+/* Idioma */
+.audio-card-compact .audio-language {
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+/* Expresión: máximo tres líneas */
+.audio-card-compact .audio-expression {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+/* Reproductor */
+.audio-card-compact .audio-player {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: auto;
+}
+
+/* Mensaje de estado */
+.audio-card-compact .audio-status {
+  margin: 12px 0;
+  font-size: 0.88rem;
+}
+
+/* Botón desplegable */
+.audio-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 10px;
+
+  border: 1px solid rgba(135, 205, 220, 0.35);
+  border-radius: 10px;
+
+  background: rgba(135, 205, 220, 0.08);
+  color: #b7e5ee;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.audio-toggle:hover {
+  background: rgba(135, 205, 220, 0.18);
+  border-color: rgba(135, 205, 220, 0.6);
+}
+
+.audio-toggle:focus-visible {
+  outline: 3px solid #b7e5ee;
+  outline-offset: 3px;
+}
+
+/* Información adicional */
+.audio-details {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  line-height: 1.75;
+}
+
+.audio-details[hidden] {
+  display: none !important;
+}
+
+.audio-details p {
+  margin: 0 0 16px;
+}
+
+/* Tarjeta expandida */
+.audio-card-compact.expanded {
+  height: auto;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 600px) {
+
+  .audio-card-compact {
+    min-height: 300px;
+    padding: 20px;
+  }
+
+  .audio-card-header {
+    min-height: auto;
+  }
+
+  .audio-card-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .audio-toggle {
+    min-height: 44px;
+  }
+}
