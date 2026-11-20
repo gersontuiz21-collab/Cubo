@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voces que permanecen: tejiendo nuestros idiomas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#inicio">Saltar al contenido</a>
+<div class="ribbon" aria-hidden="true"></div>
+<header class="container">
+  <a class="brand" href="#inicio">◈ Voces que permanecen</a>
+  <nav aria-label="Navegación principal">
+    <a href="#cubo">Cubo</a><a href="#archivo">Archivo sonoro</a>
+    <a href="#historia">Contexto histórico</a><a href="#acerca">Acerca de</a>
+  </nav>
+</header>
+<main class="container" id="inicio" tabindex="-1">
+  <section class="hero" aria-labelledby="titulo">
+    <p class="eyebrow">Museo Vivo de la Equidad y la Multiculturalidad</p>
+    <h1 id="titulo">Voces que permanecen:<span>tejiendo nuestros idiomas</span></h1>
+    <p>Multiculturalidad · Género · Equidad</p>
+    <p class="badge">Problema: pérdida y desplazamiento de los idiomas indígenas en Guatemala.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="pregunta">
+    <h2 id="pregunta">¿Cómo apoyar a quienes quieren aprender el idioma de su comunidad, pero sienten vergüenza o temor a equivocarse?</h2>
+    <p>El equipo parte de una situación descrita en su documento: una persona joven intenta hablar un idioma maya y recibe burlas por su pronunciación. Esto puede desanimarla a practicar. Es nuestro punto de partida; no describe a todas las comunidades ni constituye un testimonio recogido por este sitio.</p>
+    <p>Proponemos un pequeño archivo de seis expresiones cotidianas, revisadas y autorizadas por personas hablantes. El cubo presenta compromisos para acompañar ese aprendizaje con respeto.</p>
+    <a class="button" href="#archivo">Ir directamente al archivo sonoro</a>
+  </section>
+
+  <section id="cubo" aria-labelledby="cubo-titulo">
+    <p class="eyebrow">Seis imágenes, seis compromisos</p>
+    <h2 id="cubo-titulo">Armar también es comprometernos</h2>
+    <p>Completar el cubo representa reunir compromisos que se complementan. Los seis colores conservan su lugar y no representan pueblos ni idiomas específicos. La diversidad es una riqueza: no buscamos uniformar culturas.</p>
+    <p class="note">Juego guiado: elige una cara y desplaza sus filas hasta reconstruir la imagen. Duración orientativa: uno o dos minutos de interacción, sin contar la lectura.</p>
+    <noscript><p>Activa JavaScript para usar el cubo y mostrar las tarjetas del archivo. El contexto histórico puede leerse sin JavaScript.</p></noscript>
+    <div class="layout">
+      <div>
+        <div class="stage"><div id="cube" class="cube" role="img" aria-label="Cubo tridimensional de seis compromisos"></div></div>
+        <p class="caption">Las ilustraciones son simbólicas, no retratos de personas del equipo.</p>
+      </div>
+      <div class="panel controls">
+        <p id="step" class="eyebrow"></p><h3 id="face-title"></h3>
+        <div class="reference"><img id="reference" alt=""><p>Imagen objetivo.<br>Las filas correctas quedan fijas.</p></div>
+        <div id="rows" class="rows"></div><p id="hint" class="note"></p>
+      </div>
+    </div>
+    <div class="progress-label"><span>Compromisos reunidos</span><span id="count" role="status"></span></div>
+    <progress id="progress" max="6" value="0" aria-label="Caras completadas"></progress>
+    <nav id="faces" class="faces" aria-label="Seleccionar una cara"></nav>
+    <div class="actions"><button id="restart" class="secondary" type="button">Reiniciar cubo</button></div>
+    <div id="closing" class="panel closing" hidden tabindex="-1">
+      <p class="eyebrow">Seis compromisos que se complementan</p><h3>Ahora, demos lugar a las voces</h3>
+      <blockquote>“Si los abuelos y las abuelas comparten su voz, los jóvenes la conservan y las nuevas generaciones la hablan, el idioma sigue vivo”.</blockquote>
+      <p>Mensaje del documento del equipo. Otras personas hablantes también pueden participar: la transmisión es una responsabilidad compartida.</p>
+      <p>Escucha y practica las expresiones cuando el archivo esté listo. Este recurso puede apoyar el aprendizaje; por sí solo no resolverá el desplazamiento del idioma.</p>
+      <a class="button" href="#archivo">Explorar el archivo sonoro</a>
+    </div>
+  </section>
+
+  <section id="archivo" aria-labelledby="archivo-titulo">
+    <p class="eyebrow">Nuestra acción concreta</p><h2 id="archivo-titulo">Primer archivo sonoro comunitario</h2>
+    <p>Meta: recopilar seis expresiones cotidianas en un idioma de Guatemala, con una o dos personas hablantes que quieran participar. El idioma y la comunidad están pendientes de confirmar.</p>
+    <p id="archive-status" class="badge" role="status"></p>
+    <p>No hay reproducción automática. Escucha, repite a tu ritmo y consulta con respeto cuando tengas dudas.</p>
+    <div id="audio-cards" class="grid"></div>
+    <div class="panel">
+      <h3>Qué nos proponemos entregar</h3>
+      <ol>
+        <li>Recopilar seis expresiones y revisar sus significados con las personas hablantes.</li>
+        <li>Acordar permisos de reproducción y, por separado, de publicación; preguntar si desean aparecer en los créditos.</li>
+        <li>Entregar una copia a las personas participantes, que también pueda escucharse sin conexión.</li>
+        <li>Explorar la entrega a un docente o grupo que acepte utilizarla.</li>
+      </ol>
+      <p><strong>Estado:</strong> propuesta y recurso en preparación. La disponibilidad técnica de un audio no demuestra su entrega ni una mejora del aprendizaje. No se reportan beneficiarios ni resultados comprobados.</p>
+      <p><strong>Posible continuación:</strong> tutorías bilingües, si se consiguen personas, acuerdos y tiempo. No son un programa establecido.</p>
+    </div>
+  </section>
+
+  <section id="historia" aria-labelledby="historia-titulo">
+    <p class="eyebrow">Del contexto a la acción</p><h2 id="historia-titulo">Memoria, derechos y participación</h2>
+    <ol class="timeline">
+      <li><h3>Antecedentes: discriminación y exclusión</h3><p>El Acuerdo de 1995 reconoce una historia de discriminación por origen, cultura y lengua. Este marco ayuda a comprender por qué aprender requiere respeto y oportunidades, no burlas. [1]</p></li>
+      <li><h3>1995 · Acuerdo sobre Identidad y Derechos de los Pueblos Indígenas</h3><p>Firmado el 31 de marzo de 1995, incluye compromisos sobre idiomas y ampliación de la educación bilingüe e intercultural. Nuestro recurso propone una pequeña contribución educativa a esos objetivos. [1, apartados III.A y III.G]</p></li>
+      <li><h3>2003 · Ley de Idiomas Nacionales</h3><p>El Decreto 19-2003 distingue el español como idioma oficial y establece el reconocimiento, promoción y respeto estatal de los idiomas de los pueblos Mayas, Garífuna y Xinka. Reconocimiento e idioma oficial no significan lo mismo. [2, artículo 1]</p></li>
+      <li><h3>Respuesta propuesta por el equipo</h3><p>Ante la situación de burlas descrita en nuestro documento, proponemos seis expresiones revisadas y autorizadas y compromisos para practicar con confianza. No suponemos que todos los idiomas tengan el mismo grado de desplazamiento.</p></li>
+    </ol>
+    <div class="grid themes">
+      <article class="panel"><h3>Acuerdos de Paz</h3><p>Conectamos el reconocimiento de los idiomas y la educación intercultural con una acción pequeña y realizable: conservar expresiones y facilitar su uso. [1]</p></article>
+      <article class="panel"><h3>Pluralismo y multiculturalidad</h3><p>Reconocer y utilizar distintos idiomas permite compartir conocimientos, identidades y formas de comprender el mundo. Escuchar otras voces no exige abandonar la propia.</p></article>
+      <article class="panel"><h3>Lucha de género y equidad</h3><p>Reconocemos a las mujeres indígenas como hablantes y creadoras de conocimiento. Aprender, enseñar, grabar y decidir qué se publica requiere oportunidades compartidas. Conservar el idioma no es responsabilidad exclusiva de las mujeres.</p></article>
+    </div>
+    <h3>Fuentes</h3>
+    <p class="note">El contenido de esta sección está incluido para lectura sin conexión. Los siguientes enlaces bibliográficos requieren internet.</p>
+    <ol class="sources">
+      <li><a href="https://peacemaker.un.org/sites/default/files/document/files/2024/05/gt950331agreementidentityandrightsofindigenouspeoples28esp29.pdf" target="_blank" rel="noopener noreferrer">Naciones Unidas: Acuerdo sobre Identidad y Derechos de los Pueblos Indígenas (1995), considerandos y apartados III.A y III.G.</a></li>
+      <li><a href="https://www.congreso.gob.gt/detalle_pdf/decretos/453" target="_blank" rel="noopener noreferrer">Congreso de Guatemala: Decreto 19-2003, Ley de Idiomas Nacionales.</a> <a href="https://www.sicultura.gob.gt/wp-content/uploads/2022/10/DN13-2003.pdf" target="_blank" rel="noopener noreferrer">Texto de la ley en SICultura, artículo 1.</a></li>
+    </ol>
+  </section>
+
+  <section id="acerca" aria-labelledby="acerca-titulo">
+    <p class="eyebrow">Nuestro equipo</p><h2 id="acerca-titulo">Acerca de</h2>
+    <h3>Voces que permanecen: tejiendo nuestros idiomas</h3>
+    <p>Proyecto académico en Guatemala para el Museo Vivo de la Equidad y la Multiculturalidad. Vincula historia, respeto lingüístico y equidad mediante un cubo interactivo y un archivo sonoro en preparación.</p>
+    <p><strong>Curso:</strong> MULTICULTURALIDAD GÉNERO Y EQUIDAD.</p>
+    <dl id="academic-data"></dl>
+    <p class="note">Responsabilidades pendientes de acordar. Las tarjetas no constituyen un reparto aprobado.</p>
+    <div id="team" class="grid team"></div>
+  </section>
+  <section id="gallery-section" hidden aria-labelledby="gallery-title"><h2 id="gallery-title">Nuestro proceso</h2><div id="gallery" class="grid"></div></section>
+</main>
+<footer class="container">Motivos geométricos como evocación de tejido, sin atribución a una comunidad específica. Juego de movimientos simplificados inspirado en el cubo de Rubik.</footer>
+<dialog id="message" aria-labelledby="message-title">
+  <div class="dialog-top"><img id="message-image" alt=""><p class="eyebrow" id="message-number"></p></div>
+  <h2 id="message-title"></h2><p id="message-explanation"></p>
+  <p><strong>Relación con el problema:</strong> <span id="message-relation"></span></p>
+  <p class="action" id="message-action"></p>
+  <div class="actions"><button id="close-message" class="secondary" type="button">Cerrar</button><button id="next" class="primary" type="button">Siguiente cara</button></div>
+</dialog>
+</body>
+</html>
